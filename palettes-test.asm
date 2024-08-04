@@ -11,7 +11,6 @@ INCLUDE "pico8.inc"
 INCLUDE "constants.asm"
 
 DEF PALETTE_SWAP_START_VI EQU 30
-DEF INTERRUPT_LOOP_LAST_SCANLINE EQU 128
 
 SECTION "Interrupt VBlank", ROM0[$0040]
   jp VBlankInterrupt
