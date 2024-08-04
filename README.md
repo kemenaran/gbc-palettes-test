@@ -73,7 +73,7 @@ Variants and tradeoffs
 Results
 =======
 
-- **Hardcoded colors with consecutive access**: up to 24 colors per scanline.
-- **Hardcoded colors with random access**: up to 9 color pairs (18 colors) per scanline.
-- **Popslide with consecutive access**: up to 21 colors per scanline.
-- **Popslide with random access**: up to 8 color pairs (16 colors) per scanline.
+- **[Hardcoded colors with consecutive access](variants/hardcoded-slide-consecutive.asm)**: up to 24 colors per scanline.
+- **[Hardcoded colors with random ](variants/hardcoded-slide-random.asm)**: up to 18 colors (9 color pairs) per scanline.
+- **[Popslide with consecutive access](variants/pop-slide-consecutive.asm)**: up to 21 colors per scanline.
+- **[Popslide with random access](variants/pop-slide-random.asm)**: up to 16 colors (8 color pairs) per scanline.
