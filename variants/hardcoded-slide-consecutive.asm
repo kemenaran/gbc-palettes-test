@@ -5,7 +5,7 @@
 ; Faster than a popslide slide, but takes mode space in ROM
 ; (as the loop contains both colors data and assembly code).
 ;
-; This method can update up to 24 consecutive colors per scanline.
+; This method can copy up to 24 consecutive colors per scanline.
 ScanlineInterruptHardcodedSlideConsecutive:
   ; Mode 2 - OAM scan (40 GBC cycles)
   ; ------------------------------------------------------
@@ -36,9 +36,9 @@ ScanlineInterruptHardcodedSlideConsecutive:
   halt
   ; no need for a nop, as we're pretty sure no enabled interrupt was serviced during the halt
 
-  ; Mode 0 - HBlank, VRAM accessible (204 GBC cycles without SCX/SCX and objects)
+  ; Mode 0 - HBlank, VRAM accessible (102 GBC cycles without SCX/SCX and objects)
   ; Mode 2 - OAM scan, VRAM accessible (40 GBC cycles)
-  ; Total: 244 GBC cycles
+  ; Total: 142 GBC cycles
   ; ------------------------------------------------------
 
   ; Copy the two colors we stored in registers during Mode 3 (8 cycles)

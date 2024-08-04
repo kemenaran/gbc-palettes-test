@@ -7,7 +7,7 @@
 ; Slower than a consecutive access, but allows for more flexibility.
 ; Faster than copying individual colors (usings pairs instead), but less flexible.
 ;
-; Can copy up to 8 color pairs (16 colors) at random locations per scanline.
+; This method can copy up to 8 color pairs (16 colors) at random locations per scanline.
 ScanlineInterruptPopSlideRandom:
   ; Mode 2 - OAM scan (40 GBC cycles)
   ; ------------------------------------------------------
@@ -44,9 +44,9 @@ ScanlineInterruptPopSlideRandom:
   halt
   ; no need for a nop, as we're pretty sure no enabled interrupt was serviced during the halt
 
-  ; Mode 0 - HBlank, VRAM accessible (204 GBC cycles without SCX/SCX and objects)
+  ; Mode 0 - HBlank, VRAM accessible (102 GBC cycles without SCX/SCX and objects)
   ; Mode 2 - OAM scan, VRAM accessible (40 GBC cycles)
-  ; Total: 244 GBC cycles
+  ; Total: 142 GBC cycles
   ; ------------------------------------------------------
 
   ; Copy the two colors we stored in registers during Mode 3 (8 cycles)
@@ -62,12 +62,12 @@ MACRO copy_next_color_pair_to ; color index
   ld [hl], BGPIF_AUTOINC | \1 ; 3 cycles
   inc l ; 1 cycle
   ; Copy two consecutive colors
-  pop de
-  ld [hl], e        ; 3 cycles
-  ld [hl], d        ; 3 cycles
-  pop de
-  ld [hl], e        ; 3 cycles
-  ld [hl], d        ; 3 cycles
+  pop de       ; 3 cycles
+  ld [hl], e   ; 2 cycles
+  ld [hl], d   ; 2 cycles
+  pop de       ; 3 cycles
+  ld [hl], e   ; 2 cycles
+  ld [hl], d   ; 2 cycles
 ENDM
 
   ; Now copy as much colors as we can
