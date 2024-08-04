@@ -9,10 +9,10 @@ To select a method (popslide or hardcoded slide, consecutive access or random ac
 
 ```asm
 SECTION "LCD Status interrupt", ROM0[$0048]
-  jp ScanlineInterruptHardcodedSlideConsecutive
-  jp ScanlineInterruptHardcodedSlideRandom
-  jp ScanlineInterruptPopSlideConsecutive
-  jp ScanlineInterruptPopSlideRandom
+  ;jp ScanlineInterruptHardcodedSlideConsecutive
+  ;jp ScanlineInterruptHardcodedSlideRandom
+  ;jp ScanlineInterruptPopSlideConsecutive
+  ;jp ScanlineInterruptPopSlideRandom
 ```
 
 Building
